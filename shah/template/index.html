@@ -1,0 +1,15 @@
+<html>
+<body>
+<table>
+{% for m in users%}
+<tr>
+<td>{{m.name}}</td>
+<td>{{m.email}}</td>
+<td>{{m.age}}</td>
+<td><img src="{{baseUrl}}media/{{m.profile_picture}}" heigth="200"></td>
+{%endfor %}
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+body{
+	margin:0;
+	font-family:Segoe UI;
+	
+}
+#container{
+	width:1280px;
+	margin-left:auto;
+	margin-right:auto;
+	height:960px;
+}
+#left{
+	float:left;
+	width:120px;
+	height:100%;
+	background:gray;
+}
+#middle{
+	float:middle;
+	width:960px;
+	height:100%;
+	background:blue;
+}
+#right{
+	float:right;
+	width:200px;
+	height:100%;
+	background:red;
+}

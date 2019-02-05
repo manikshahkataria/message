@@ -1,0 +1,89 @@
+ {% load staticfiles %}
+{% static "" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="{{baseUrl}}css/styles.css"/>
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}css/bootstrap.css">
+<style type="text/css">
+    .btn-info{
+    color:orange}
+    </style>
+</style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3"  class="p-3 mb-2 bg-info text-white">
+          <div class="p-3 mb-2 bg-info text-white">
+        <h2>Request List</h2>
+        <form action="requestsend" method="get">
+            <input type="text" name="rec" placeholder="find friend">
+           <button class="btn btn-success" value="requestsend"> Send Request
+           </button>     </form>
+        <p>
+            {% for u in request %}
+
+            {{u.sender}}<a href="requestaccept?rid={{u.rid}}" class="btn btn-info btn-lg">Accept</a>
+            <a href="requestreject?rid={{u.rid}} "class="btn btn-info btn-lg">Reject</a>
+            {% endfor %}
+        </p>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="col-sm-6" >
+          <h1>wall post</h1>
+          <form action="sendmsg" method="get">
+          <div class="form-group">
+
+
+  <label for="to">To:</label>
+  <input type="text" class="form-control" name="id">
+          <label > Write your msg here</label>
+          <textarea class="form-control" rows="5" name="msg">
+          </textarea>
+          <button class="btn btn-success" value="sendmsg"> Send
+           </button>
+          </div>
+            {% for w in wposts %}
+
+            <h5>{{w.sender}}-<br></h5>
+            <h4>{{w.message}}<br></h4>
+            {% endfor %}
+        </td>
+        </form>
+      </div>
+
+
+
+
+
+
+  <div class="col-sm-3" class="p-3 mb-2 bg-info text-white">
+        <div class="p-3 mb-2 bg-info text-white">
+<h2>upload</h2>
+</div>
+<form class="p-3 mb-2 bg-info text-white" action="uploadpic" method="POST" enctype="multipart/form-data">
+{%csrf_token %}
+User name:<input type="text" name="username" id="username"/><br/>
+Age:<input type="text" name="age" id="age"/><br/>
+Email:<input type="email" name="email" >
+<input class="btn btn-success" type="file" name="myfile"/><br/>
+<input class="btn btn-info btn-lg" type="submit" name="submit" value="Upload"/>
+</form>
+</div>
+
+
+</body>
+
+</html>
